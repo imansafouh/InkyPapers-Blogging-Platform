@@ -45,18 +45,36 @@ export class BlogController {
     }
   }
 
-  // async getBlogsByAuthor(req: Request, res: Response, next: NextFunction) {
+  // async getBlogComments(req: Request, res: Response, next: NextFunction) {
   //   try {
-  //     const { authorId } = req.params;
-  //     const { page, limit } = req.query;
-  //     const blogs = await this.blogService.getBlogsByAuthor(
-  //       authorId,
-  //       page,
-  //       limit
-  //     );
-  //     res.status(200).json(blogs);
+  //     const { id } = req.params;
+  //     const comments = await blogService.getBlogComments(id);
+
+  //     res.status(200).json(comments);
   //   } catch (err) {
   //     next(err);
   //   }
   // }
+
+  async updateBlog(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      const result = await blogService.updateBlog(id, req.body);
+
+      res.status(200).json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async deleteBlog(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      await blogService.deleteBlog(id);
+
+      res.status(204).send();
+    } catch (err) {
+      next(err);
+    }
+  }
 }

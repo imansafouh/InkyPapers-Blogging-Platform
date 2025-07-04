@@ -7,15 +7,6 @@ export class BlogRepository extends BaseRepository<IBlog> {
     super(Blog);
   }
 
-  async findByAuthor(authorId: string, page = 1, limit = 10) {
-    return this.findAll(
-      {
-        userId: authorId,
-      },
-      { page, limit }
-    );
-  }
-
   async getComments(blogId: string) {
     return this.model
       .findById(blogId)

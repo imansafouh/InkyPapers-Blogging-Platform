@@ -4,6 +4,7 @@ import morgan from "morgan";
 
 import userRouter from "./src/routes/User.routes";
 import blogRouter from "./src/routes/Blog.routes";
+import commentRouter from "./src/routes/Comment.routes";
 import { globalErrorHandler } from "./src/middlewares/ErrorHandler.middleware";
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(morgan("dev"));
 // Routes
 app.use("/api/user", userRouter);
 app.use("/api/blog", blogRouter);
+app.use("/api/comment", commentRouter);
 
 // Not Found Handler
 // app.all("*", (req, res) => {

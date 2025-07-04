@@ -3,6 +3,7 @@ import { FilterQuery, Types } from "mongoose";
 import { AppError } from "../utils/AppError.util";
 import { IBlog } from "../interfaces/Blog.interface";
 import { PaginationOptions } from "../repositories/Base.repository";
+import { IComment } from "../interfaces/Comment.interface";
 
 export class BlogService {
   private blogRepo: BlogRepository = new BlogRepository();
@@ -22,8 +23,6 @@ export class BlogService {
   }
 
   async getBlogById(blogId: string) {
-    console.log(blogId);
-
     const blog = await this.blogRepo.findById(blogId);
     if (!blog) {
       throw new AppError("Blog not found", 404);
@@ -31,19 +30,19 @@ export class BlogService {
     return blog;
   }
 
-  //   async getBlogsByAuthor(authorId, page = 1, limit = 10) {
-  //     return this.blogRepo.findByAuthor(authorId, page, limit);
+  // async getBlogComments(blogId: string) {
+  //   const comments = await this.blogRepo.getComments(blogId);
+  //   if (!comments) {
+  //     throw new AppError("Comments not found for this blog", 404);
   //   }
+  //   return comments;
+  // }
 
-  //   async getBlogComments(blogId) {
-  //     return this.blogRepo.getCpmments(blogId);
-  //   }
+  async updateBlog(blogId: string, data: Partial<IBlog>) {
+    return this.blogRepo.update(blogId, data);
+  }
 
-  //   async updateBlog(blogId, data) {
-  //     return this.blogRepo.update(blogId, data);
-  //   }
-
-  //   async deleteBlog(blogId) {
-  //     return this.blogRepo.delete(blogId);
-  //   }
+  async deleteBlog(blogId: string) {
+    return this.blogRepo.delete(blogId);
+  }
 }
