@@ -5,8 +5,10 @@ import {
   UpdateQuery,
   ProjectionType,
   PopulateOptions,
+  Types,
+  isValidObjectId,
 } from "mongoose";
-import { normalizePopulate } from "../utils/populate.util";
+import { normalizePopulate } from "../utils/Populate.util";
 
 export interface PaginationOptions {
   page?: number;
@@ -58,13 +60,19 @@ export class BaseRepository<T extends Document> {
   }
 
   async findById(
-    id: string,
+    id: string | Types.ObjectId,
     populate?: PaginationOptions["populate"]
   ): Promise<T | null> {
-    let query = this.model.findById(id);
+    if (typeof id === "string" && !isValidObjectId(id)) return null;
+
+    const objectId = typeof id === "string" ? new Types.ObjectId(id) : id;
+
+    let query = this.model.findById(objectId);
+
     if (populate) {
       query = query.populate(normalizePopulate(populate));
     }
+
     return query.exec();
   }
 
