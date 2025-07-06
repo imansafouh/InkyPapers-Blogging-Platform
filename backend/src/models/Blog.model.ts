@@ -17,6 +17,10 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+      default: "https://example.com/default-image.jpg", // Placeholder image URL
+    },
     createdAt: {
       type: Date,
       default: Date.now,

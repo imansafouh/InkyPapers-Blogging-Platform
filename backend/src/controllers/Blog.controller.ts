@@ -3,6 +3,7 @@ import { BlogService } from "../services/Blog.service";
 import { APIFeatures } from "../utils/ApiFeature.util";
 
 const blogService = new BlogService();
+
 export class BlogController {
   async createBlog(req: Request, res: Response, next: NextFunction) {
     try {
@@ -21,10 +22,10 @@ export class BlogController {
   async getAllBlogs(req: Request, res: Response, next: NextFunction) {
     try {
       const features = new APIFeatures(req.query)
+        .paginate()
         .parse()
         .sort()
-        .limitFields()
-        .paginate();
+        .limitFields();
 
       const { filter, options } = features.build();
       const result = await blogService.getAllBlogs(filter, options);
@@ -44,17 +45,6 @@ export class BlogController {
       next(err);
     }
   }
-
-  // async getBlogComments(req: Request, res: Response, next: NextFunction) {
-  //   try {
-  //     const { id } = req.params;
-  //     const comments = await blogService.getBlogComments(id);
-
-  //     res.status(200).json(comments);
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
 
   async updateBlog(req: Request, res: Response, next: NextFunction) {
     try {

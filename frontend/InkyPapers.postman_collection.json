@@ -1,0 +1,901 @@
+{
+	"info": {
+		"_postman_id": "24624232-573b-4ec9-8258-22c9abeda6d3",
+		"name": "InkyPapers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37089639"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user2@example.com\",\r\n    \"password\": \"Password@1234\",\r\n    \"name\": \"User 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/user/register",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						},
+						"description": "## User Registration Endpoint\n\nThis endpoint allows new users to register by providing their details. It accepts a POST request containing user information and returns a response indicating the success or failure of the registration process.\n\n### Request Format\n\n- **Method**: POST\n    \n- **URL**: `{{API_URL}}/user/register`\n    \n- **Content-Type**: application/json\n    \n\n### Request Body\n\nThe request body must be in JSON format and include the following parameters:\n\n- **email** (string): The email address of the user. It must be a valid email format.\n    \n- **password** (string): The password for the user account. It should meet security requirements (e.g., minimum length, complexity).\n    \n- **name** (string): The full name of the user.\n    \n\n#### Example Request Body\n\n``` json\n{\n  \"email\": \"user@example.com\",\n  \"password\": \"Password@1234\",\n  \"name\": \"User 1\"\n}\n\n ```\n\n### Response Structure\n\nUpon successful registration, the response will include a confirmation message and a user ID. In case of an error, it will provide an error message detailing the issue.\n\n#### Example Response\n\n- **Success Response**:\n    \n    - **status** (string): Indicates the success of the registration (e.g., \"success\").\n        \n    - **message** (string): A confirmation message (e.g., \"User registered successfully\").\n        \n    - **userId** (string): The unique identifier for the newly registered user.\n        \n- **Error Response**:\n    \n    - **status** (string): Indicates the failure of the registration (e.g., \"error\").\n        \n    - **message** (string): A description of the error encountered (e.g., \"Email already exists\").\n        \n\nEnsure to handle both success and error responses appropriately in your application."
+					},
+					"response": [
+						{
+							"name": "Email in use",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user@example.com\",\r\n    \"password\": \"Password@1234\",\r\n    \"name\": \"User 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/register",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-3pKQptd4ekPUAYnByE860gdCjlI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:39:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Email already in use\"\n}"
+						},
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user2@example.com\",\r\n    \"password\": \"Password@1234\",\r\n    \"name\": \"User 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/register",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "470"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d6-Ri4QnMR6G7CBH2rTJcv3v5ohUY4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:40:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"name\": \"User 2\",\n        \"email\": \"user2@example.com\",\n        \"password\": \"$2b$10$f4yjcw1x5/bC0tRYwGEgl.LGlCP2k5MqDIfIquf8xPWc4x5BKcxNO\",\n        \"isDeleted\": false,\n        \"isSuspended\": false,\n        \"avatar\": \"\",\n        \"followers\": [],\n        \"following\": [],\n        \"_id\": \"68684a3c41e2420d063fdc87\",\n        \"createdAt\": \"2025-07-04T21:40:12.464Z\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg0YTNjNDFlMjQyMGQwNjNmZGM4NyIsImlhdCI6MTc1MTY2NTIxMiwiZXhwIjoxNzU5NDQxMjEyfQ.pqWItgjp7oslImTyOAv6dILRD_aBqjvlTOtYcTiKllA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@example.com\",\r\n    \"password\": \"Password@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/user/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user@example.com\",\r\n    \"password\": \"Passworrd@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-nHlhgoBn2rOjY/pQURBWBfOmom4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:40:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid credentials\"\n}"
+						},
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user@example.com\",\r\n    \"password\": \"Password@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/user/login",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "469"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d5-mKVFCCkT8G1gHkI/HJhP+Ayxz3s\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:41:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"6865b5e7c4e30e85f3dd024e\",\n        \"name\": \"User 1\",\n        \"email\": \"user@example.com\",\n        \"password\": \"$2b$10$Pi6XLLl2rdSCwL5jB5m5a.Ih8xSW5opLW4sYrQa3cr5I1CVKh/rMW\",\n        \"isDeleted\": false,\n        \"isSuspended\": false,\n        \"avatar\": \"\",\n        \"followers\": [],\n        \"following\": [],\n        \"createdAt\": \"2025-07-02T22:42:47.661Z\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjViNWU3YzRlMzBlODVmM2RkMDI0ZSIsImlhdCI6MTc1MTY2NTI2NCwiZXhwIjoxNzU5NDQxMjY0fQ.SKA9V3Jrs42Q7nj7YOK52n1sWTTbEQsOLMaELL1wwVk\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Create blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Fifth blog\",\r\n    \"body\": \"Yarab yeshtaghal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/blog",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"blog"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Fifth blog\",\r\n    \"body\": \"Yarab yeshtaghal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/blog",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"blog"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ba-sgcFOJsl2ShPhUmpv17BgVLDZfI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:42:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"6865b5e7c4e30e85f3dd024e\",\n    \"title\": \"Fifth blog\",\n    \"body\": \"Yarab yeshtaghal\",\n    \"topic\": [],\n    \"likes\": [],\n    \"_id\": \"68684aaa2379ce6b32b8095f\",\n    \"createdAt\": \"2025-07-04T21:42:02.876Z\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "Duplicate key error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Fifth blog\",\r\n    \"body\": \"Yarab yeshtaghal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/blog",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"blog"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-QV0jqqryjisAILvGfquAVQ/9F50\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:42:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"Duplicate key error\",\n    \"details\": {\n        \"title\": \"Fifth blog\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/blog",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"blog"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "First blog",
+									"disabled": true
+								},
+								{
+									"key": "body",
+									"value": "Yarab yeshtaghal",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/blog",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"blog"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "First blog",
+											"disabled": true
+										},
+										{
+											"key": "body",
+											"value": "Yarab yeshtaghal",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1399"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"577-iopO9hN7N1fN3LDjMAkwFCRI9To\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:42:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"68666cc55578b644fe771a26\",\n            \"userId\": \"68666cc55578b644fe771a25\",\n            \"title\": \"First blog\",\n            \"body\": \"Yarab yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-03T11:43:01.940Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68666ee35ed4e282ec8f374a\",\n            \"userId\": \"68666ee35ed4e282ec8f3749\",\n            \"title\": \"Second blog\",\n            \"body\": \"Yarab yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-03T11:52:03.741Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"686819cc3f469d27811e2518\",\n            \"userId\": \"686819cc3f469d27811e2517\",\n            \"title\": \"Third blog\",\n            \"body\": \"Yarab userId yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-04T18:13:32.687Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68681a97d7aab87fefebcc25\",\n            \"userId\": \"68681a97d7aab87fefebcc24\",\n            \"title\": \"Fourth blog\",\n            \"body\": \"Yarab userId yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-04T18:16:55.356Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68681adac873e9e024a9e505\",\n            \"userId\": \"68681adac873e9e024a9e504\",\n            \"title\": \"Fourthh blog\",\n            \"body\": \"Yarab userId yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-04T18:18:02.534Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6868303c2c36d709d75db67e\",\n            \"userId\": \"6865b5e7c4e30e85f3dd024e\",\n            \"title\": \"updated title\",\n            \"body\": \"Yarab userId yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-04T19:49:16.416Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68684aaa2379ce6b32b8095f\",\n            \"userId\": \"6865b5e7c4e30e85f3dd024e\",\n            \"title\": \"Fifth blog\",\n            \"body\": \"Yarab yeshtaghal\",\n            \"topic\": [],\n            \"likes\": [],\n            \"createdAt\": \"2025-07-04T21:42:02.876Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 7,\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalPages\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Get blog by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/blog/68681adac873e9e024a9e505",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"blog",
+								"68681adac873e9e024a9e505"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/blog/68681adac873e9e024a9e505",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"blog",
+										"68681adac873e9e024a9e505"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "924"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39c-WBaX5T7/vCjp8j/ctNgIJZrLfYo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Jul 2025 21:42:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"68681adac873e9e024a9e505\",\n    \"userId\": \"68681adac873e9e024a9e504\",\n    \"title\": \"Fourthh blog\",\n    \"body\": \"Yarab userId yeshtaghal\",\n    \"topic\": [],\n    \"likes\": [],\n    \"createdAt\": \"2025-07-04T18:18:02.534Z\",\n    \"__v\": 0,\n    \"comments\": [\n        {\n            \"_id\": \"68683db81aa77fc2a8489ebe\",\n            \"userId\": {\n                \"_id\": \"6865b5e7c4e30e85f3dd024e\",\n                \"name\": \"User 1\",\n                \"avatar\": \"\"\n            },\n            \"blogId\": \"68681adac873e9e024a9e505\",\n            \"comment\": \"updated comment 3\",\n            \"isDeleted\": false,\n            \"createdAt\": \"2025-07-04T20:46:48.351Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68683db61aa77fc2a8489ebc\",\n            \"userId\": {\n                \"_id\": \"6865b5e7c4e30e85f3dd024e\",\n                \"name\": \"User 1\",\n                \"avatar\": \"\"\n            },\n            \"blogId\": \"68681adac873e9e024a9e505\",\n            \"comment\": \"this is a comment 2\",\n            \"isDeleted\": false,\n            \"createdAt\": \"2025-07-04T20:46:46.807Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"68683db31aa77fc2a8489eba\",\n            \"userId\": {\n                \"_id\": \"6865b5e7c4e30e85f3dd024e\",\n                \"name\": \"User 1\",\n                \"avatar\": \"\"\n            },\n            \"blogId\": \"68681adac873e9e024a9e505\",\n            \"comment\": \"this is a comment\",\n            \"isDeleted\": false,\n            \"createdAt\": \"2025-07-04T20:46:43.728Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/blog/68681af780fb4270545bade7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"blog",
+								"68681af780fb4270545bade7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"title\": \"updated title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/blog/68681adac873e9e024a9e505",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"blog",
+								"68681adac873e9e024a9e505"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Get All Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/comment?blogId=68681adac873e9e024a9e505",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comment"
+							],
+							"query": [
+								{
+									"key": "blogId",
+									"value": "68681adac873e9e024a9e505"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"this is a comment 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/comment/68681adac873e9e024a9e505",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comment",
+								"68681adac873e9e024a9e505"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/comment/68683d4e1aa77fc2a8489eb4",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comment",
+								"68683d4e1aa77fc2a8489eb4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"updated comment 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/comment/68683db81aa77fc2a8489ebe",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"comment",
+								"68683db81aa77fc2a8489ebe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
