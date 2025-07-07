@@ -5,6 +5,7 @@ import { IBlog } from "../interfaces/Blog.interface";
 import { PaginationOptions } from "../repositories/Base.repository";
 import { CommentRepository } from "../repositories/Comment.repository";
 import { upload } from "../middlewares/ImageUpload.middleware";
+import { populate } from "dotenv";
 
 export class BlogService {
   private blogRepo: BlogRepository = new BlogRepository();
@@ -21,7 +22,10 @@ export class BlogService {
     filter: FilterQuery<IBlog> = {},
     options: PaginationOptions = {}
   ) {
-    return this.blogRepo.findAll(filter, options);
+    return this.blogRepo.findAll(filter, {
+      ...options,
+      populate: { path: "userId", select: "name avatar" },
+    });
   }
 
   async getBlogById(blogId: string) {
